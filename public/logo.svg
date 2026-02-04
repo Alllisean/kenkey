@@ -1,0 +1,12 @@
+<svg viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 32C12 32 0 20.8 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 20.8 12 32 12 32Z" fill="#7E22CE" />
+    <g stroke="white" strokeWidth="0.5" strokeOpacity="0.6">
+        <line x1="12" y1="2" x2="12" y2="30" />
+        <line x1="12" y1="2" x2="4" y2="24" />
+        <line x1="12" y1="2" x2="20" y2="24" />
+        <line x1="12" y1="2" x2="1" y2="16" />
+        <line x1="12" y1="2" x2="23" y2="16" />
+        <line x1="12" y1="2" x2="6" y2="6" />
+        <line x1="12" y1="2" x2="18" y2="6" />
+    </g>
+</svg>
