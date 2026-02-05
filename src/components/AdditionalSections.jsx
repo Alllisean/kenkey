@@ -88,10 +88,11 @@ export const PlatformSection = ({ t, darkMode, highlightedActivity, setHighlight
                         const isSpaces = p.name === t.nav.bitz.spaces;
                         const isVentures = p.name === t.nav.bitz.ventures;
                         const isKids = p.name === t.nav.bitz.kids;
+                        const isActive = activeHighlight === 'ALL' || activeHighlight === p.name;
 
                         const CardContent = (
                             <div
-                                className={`h-[300px] relative rounded-[2rem] bg-zinc-200 overflow-hidden group shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${activeHighlight === 'ALL' || activeHighlight === p.name ? 'animate-pulse-glow z-10' : ''}`}
+                                className={`h-[300px] relative rounded-[2rem] bg-zinc-200 overflow-hidden group shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${isActive ? 'animate-pulse-glow z-10' : ''}`}
                                 style={{ animationDelay: `${i * 0.1}s` }}
                             >
                                 {/* Interactive Image Placeholder */}
@@ -104,15 +105,15 @@ export const PlatformSection = ({ t, darkMode, highlightedActivity, setHighlight
                                 </div>
 
                                 {/* Hover Overlay: CLEAR Light Purple Translucent Hue */}
-                                <div className="absolute inset-0 bg-purple-600/30 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 text-center">
-                                    {/* Content revealed only on hover */}
-                                    <div className="text-4xl mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{p.icon}</div>
-                                    <h3 className="text-lg font-black text-white mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">{p.name}</h3>
-                                    <p className="text-purple-100 font-bold text-[10px] leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 italic">
+                                <div className={`absolute inset-0 bg-purple-600/30 backdrop-blur-md transition-all duration-500 flex flex-col items-center justify-center p-6 text-center ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                    {/* Content revealed only on hover or active */}
+                                    <div className={`text-4xl mb-4 transition-transform duration-500 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>{p.icon}</div>
+                                    <h3 className={`text-lg font-black text-white mb-2 transition-transform duration-500 delay-75 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>{p.name}</h3>
+                                    <p className={`text-purple-100 font-bold text-[10px] leading-relaxed transition-transform duration-500 delay-100 italic ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>
                                         {p.desc}
                                     </p>
                                     {(isAcademy || isEnterprise || isSpaces || isVentures || isKids) && (
-                                        <div className="mt-4 px-4 py-1 bg-white text-purple-900 text-[10px] font-black rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                                        <div className={`mt-4 px-4 py-1 bg-white text-purple-900 text-[10px] font-black rounded-full transition-transform duration-500 delay-150 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>
                                             {isAcademy ? 'VIEW PROGRAM' : isEnterprise ? 'VIEW PARTNERSHIP' : isSpaces ? 'EXPLORE SPACES' : isVentures ? 'EXPLORE VENTURES' : 'LEARN MORE'}
                                         </div>
                                     )}
