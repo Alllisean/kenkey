@@ -185,6 +185,8 @@ const AnimatedCounter = ({ value, duration = 2000 }) => {
 export const ImpactSection = ({ t, darkMode }) => {
     const ref = useRef(null);
     const isVisible = useIsVisible(ref);
+    const [isImpactActive, setIsImpactActive] = useState(false); // Mobile tap state
+
     if (!t) return null;
 
     const icons = {
@@ -245,18 +247,21 @@ export const ImpactSection = ({ t, darkMode }) => {
                         </div>
 
                         {/* Vertical Image / Impact Visual */}
-                        <div className={`hidden lg:flex flex-1 w-full h-[580px] rounded-[3rem] relative overflow-hidden group transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                        <div
+                            onClick={() => setIsImpactActive(!isImpactActive)}
+                            className={`hidden lg:flex flex-1 w-full h-[580px] rounded-[3rem] relative overflow-hidden group transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
+                        >
                             {/* Professional Background Image - High Res + Zoom + Blur on hover */}
                             <div
-                                className="absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110 group-hover:blur-sm"
+                                className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 group-hover:scale-110 group-hover:blur-sm ${isImpactActive ? 'scale-110 blur-sm' : ''}`}
                                 style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=2000&q=90")' }}
                             >
-                                <div className="absolute inset-0 bg-black/10 transition-opacity duration-700 group-hover:opacity-0"></div>
+                                <div className={`absolute inset-0 bg-black/10 transition-opacity duration-700 group-hover:opacity-0 ${isImpactActive ? 'opacity-0' : ''}`}></div>
                             </div>
 
                             {/* Hover Overlay Content */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-12 text-center bg-purple-900/20 backdrop-blur-md">
-                                <div className="bg-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/20 transform translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+                            <div className={`absolute inset-0 transition-all duration-500 flex flex-col items-center justify-center p-12 text-center bg-purple-900/20 backdrop-blur-md ${isImpactActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                <div className={`bg-white/10 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/20 transition-all duration-500 ${isImpactActive ? 'translate-y-0' : 'transform translate-y-8 group-hover:translate-y-0'}`}>
                                     <div className="text-4xl mb-6">🌍</div>
                                     <h3 className="text-xl font-black text-white mb-2 uppercase tracking-widest leading-none">
                                         Empowering <br /> Innovation
@@ -281,7 +286,7 @@ export const PartnerSection = ({ t, darkMode }) => {
         <section className={`py-20 transition-colors duration-500 ${darkMode ? 'bg-black' : 'bg-zinc-50'}`}>
             <div className="max-w-screen-xl mx-auto px-6 text-center">
                 <h3 className={`font-black mb-12 uppercase tracking-[0.4em] text-[10px] ${darkMode ? 'text-purple-400/50' : 'text-purple-200'}`}>{t.title}</h3>
-                <div className={`flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 transition-all duration-700 ${darkMode ? 'grayscale-0' : 'grayscale hover:grayscale-0'}`}>
+                <div className={`flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 transition-all duration-700 ${darkMode ? 'grayscale-0' : 'grayscale-0 lg:grayscale lg:hover:grayscale-0'}`}>
                     <div className={`text-2xl font-black ${darkMode ? 'text-white' : 'text-purple-900'}`}>GOOGLE</div>
                     <div className={`text-2xl font-black ${darkMode ? 'text-white' : 'text-purple-900'}`}>MICROSOFT</div>
                     <div className={`text-2xl font-black ${darkMode ? 'text-white' : 'text-purple-900'}`}>AWS</div>
