@@ -5,6 +5,7 @@ const Navbar = ({ lang, setLang, t, darkMode, setDarkMode, setHighlightedActivit
     const [isScrolled, setIsScrolled] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [isLangOpen, setIsLangOpen] = useState(false);
+    const [isMobileActivitiesOpen, setIsMobileActivitiesOpen] = useState(false);
     const lastScrollY = useRef(0);
 
     useEffect(() => {
@@ -86,16 +87,55 @@ const Navbar = ({ lang, setLang, t, darkMode, setDarkMode, setHighlightedActivit
                     </svg>
                 </button>
                 <div className={`${isOpen ? 'block' : 'hidden'} items-center justify-between w-full md:flex md:w-auto`} id="navbar-sticky">
-                    <div className={`flex flex-col md:flex-row md:items-center gap-6 p-4 md:p-0 mt-4 md:mt-0 font-medium border rounded-lg md:border-0 md:bg-transparent ${isScrolled ? 'border-purple-600 bg-purple-800' : 'border-white/10 bg-black/20 md:bg-transparent'
-                        }`}>
-                        <div className="flex flex-col space-y-1">
-                            <a href="#" className="text-sm text-purple-300 hover:text-white transition-colors" aria-current="page">{t.home}</a>
-                            <a href="#" className="text-sm text-purple-300 hover:text-white transition-colors">{t.about}</a>
-                        </div>
-                        <div>
-                            <a href="#" className="text-sm text-purple-200 hover:text-white transition-colors">{t.contact}</a>
-                        </div>
-                    </div>
+                    <ul className={`flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-4 md:p-0 mt-4 md:mt-0 font-medium border rounded-lg md:border-0 md:bg-transparent ${isScrolled ? 'border-purple-600 bg-purple-800' : 'border-white/10 bg-black/20 md:bg-transparent'}`}>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors" aria-current="page">{t.home}</a></li>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors">{t.about}</a></li>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors">{t.contact}</a></li>
+
+                        {/* Mobile: Activities Dropdown */}
+                        <li className="md:hidden border-t border-white/10 pt-2 mt-2">
+                            <button
+                                onClick={() => setIsMobileActivitiesOpen(!isMobileActivitiesOpen)}
+                                className="flex items-center justify-between w-full py-2 px-3 text-purple-300 rounded hover:bg-purple-700 transition-colors font-bold"
+                            >
+                                {t.activities}
+                                <svg className={`w-3 h-3 ml-2.5 transition-transform duration-300 ${isMobileActivitiesOpen ? 'rotate-180' : ''}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            {isMobileActivitiesOpen && (
+                                <div className="py-2 space-y-1 pl-4 animate-in fade-in slide-in-from-top-1">
+                                    {[t.bitz.academy, t.bitz.enterprise, t.bitz.spaces, t.bitz.ventures, t.bitz.kids].map((item) => (
+                                        <button
+                                            key={item}
+                                            onClick={() => {
+                                                setHighlightedActivity(item);
+                                                setIsOpen(false);
+                                                setIsMobileActivitiesOpen(false);
+                                            }}
+                                            className="block w-full text-left py-2 px-3 text-sm text-gray-300 hover:text-white transition-colors border-l-2 border-purple-500/30 hover:border-purple-500 pl-4"
+                                        >
+                                            {item}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </li>
+
+                        {/* Mobile: Language Toggle */}
+                        <li className="md:hidden border-t border-white/10 pt-2 mt-2">
+                            <button
+                                onClick={() => {
+                                    toggleLang(lang === 'en' ? 'fr' : 'en');
+                                    setIsOpen(false);
+                                }}
+                                className="flex items-center space-x-2 px-3 py-2 text-purple-300 hover:text-white transition-colors text-sm font-medium w-full"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>
+                                <span>{lang === 'en' ? 'Switch to French' : 'Passer en Anglais'}</span>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
 
                 <div className="hidden md:flex flex-grow items-center justify-end gap-4">
