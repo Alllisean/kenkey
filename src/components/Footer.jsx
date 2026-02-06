@@ -18,16 +18,16 @@ const Footer = ({ t }) => {
                     <p className="text-purple-300/80 text-sm leading-relaxed max-w-xs mb-8">{t.bio}</p>
                     <div className="flex gap-4">
                         {/* Social items */}
-                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-purple-950 transition-all cursor-pointer">𝕏</div>
-                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-purple-950 transition-all cursor-pointer">in</div>
-                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-purple-950 transition-all cursor-pointer">📸</div>
+                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white active:bg-white hover:text-purple-950 active:text-purple-950 transition-all cursor-pointer">𝕏</div>
+                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white active:bg-white hover:text-purple-950 active:text-purple-950 transition-all cursor-pointer">in</div>
+                        <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white active:bg-white hover:text-purple-950 active:text-purple-950 transition-all cursor-pointer">📸</div>
                     </div>
                 </div>
 
                 <div className="md:ml-auto">
                     <h4 className="font-bold text-xs uppercase tracking-widest text-purple-400 mb-8">{t.columns?.platform || "Platform"}</h4>
                     <ul className="space-y-4 text-purple-100 text-sm font-medium">
-                        <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Academy</li>
+                        <li className="hover:text-white active:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100 active:opacity-100">Academy</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Enterprise</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Spaces</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Ventures</li>
@@ -37,7 +37,7 @@ const Footer = ({ t }) => {
                 <div className="md:ml-auto">
                     <h4 className="font-bold text-xs uppercase tracking-widest text-purple-400 mb-8">{t.columns?.community || "Community"}</h4>
                     <ul className="space-y-4 text-purple-100 text-sm font-medium">
-                        <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Champions</li>
+                        <li className="hover:text-white active:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100 active:opacity-100">Champions</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Alumni</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Mentors</li>
                         <li className="hover:text-white cursor-pointer transition-colors opacity-80 hover:opacity-100">Sponsors</li>

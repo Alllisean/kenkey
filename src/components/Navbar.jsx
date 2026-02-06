@@ -74,23 +74,37 @@ const Navbar = ({ lang, setLang, t, darkMode, setDarkMode, setHighlightedActivit
                     </div>
                     <span className="self-center text-3xl font-black whitespace-nowrap logo-missing-parts bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent tracking-tighter">BITZ 2.0</span>
                 </a>
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    type="button"
-                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-purple-200 rounded-lg md:hidden hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-300 ml-auto"
-                    aria-controls="navbar-sticky"
-                    aria-expanded={isOpen}
-                >
-                    <span className="sr-only">{t.aria?.menu || "Open main menu"}</span>
-                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
+                <div className="flex items-center gap-2 ml-auto md:hidden">
+                    <button
+                        onClick={() => setDarkMode(!darkMode)}
+                        className={`inline-flex items-center justify-center p-2 w-10 h-10 text-sm rounded-full hover:bg-purple-800 transition-colors shadow-sm ${darkMode ? 'text-yellow-400 bg-zinc-800' : 'text-purple-200 bg-transparent'}`}
+                        aria-label="Toggle Theme"
+                    >
+                        {darkMode ? (
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591-1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+                        ) : (
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+                        )}
+                    </button>
+
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        type="button"
+                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-purple-200 rounded-lg hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                        aria-controls="navbar-sticky"
+                        aria-expanded={isOpen}
+                    >
+                        <span className="sr-only">{t.aria?.menu || "Open main menu"}</span>
+                        <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                </div>
                 <div className={`${isOpen ? 'block' : 'hidden'} items-center justify-between w-full md:flex md:w-auto`} id="navbar-sticky">
                     <ul className={`flex flex-col md:flex-row md:items-center gap-4 md:gap-8 p-4 md:p-0 mt-4 md:mt-0 font-medium border rounded-lg md:border-0 md:bg-transparent ${isScrolled ? 'border-purple-600 bg-purple-800' : 'border-white/10 bg-black/20 md:bg-transparent'}`}>
-                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors" aria-current="page">{t.home}</a></li>
-                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors">{t.about}</a></li>
-                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 md:hover:bg-transparent md:hover:text-white md:p-0 transition-colors">{t.contact}</a></li>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 active:bg-purple-700 md:hover:bg-transparent md:active:bg-transparent md:hover:text-white md:active:text-white md:p-0 transition-colors" aria-current="page">{t.home}</a></li>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 active:bg-purple-700 md:hover:bg-transparent md:active:bg-transparent md:hover:text-white md:active:text-white md:p-0 transition-colors">{t.about}</a></li>
+                        <li><a href="#" className="block py-2 px-3 text-purple-300 rounded hover:bg-purple-700 active:bg-purple-700 md:hover:bg-transparent md:active:bg-transparent md:hover:text-white md:active:text-white md:p-0 transition-colors">{t.contact}</a></li>
 
                         {/* Mobile: Activities Dropdown */}
                         <li className="md:hidden border-t border-white/10 pt-2 mt-2">
@@ -135,6 +149,8 @@ const Navbar = ({ lang, setLang, t, darkMode, setDarkMode, setHighlightedActivit
                                 <span>{lang === 'en' ? 'Switch to French' : 'Passer en Anglais'}</span>
                             </button>
                         </li>
+
+
                     </ul>
                 </div>
 
@@ -154,7 +170,7 @@ const Navbar = ({ lang, setLang, t, darkMode, setDarkMode, setHighlightedActivit
                                             setHighlightedActivity(item);
                                             setIsOpen(false);
                                         }}
-                                        className={`px-6 py-2.5 text-left text-sm font-medium transition-colors whitespace-nowrap ${darkMode ? 'text-purple-300 hover:bg-zinc-800 hover:text-white' : 'text-purple-900 hover:bg-purple-50 hover:text-purple-700'}`}
+                                        className={`px-6 py-2.5 text-left text-sm font-medium transition-colors whitespace-nowrap ${darkMode ? 'text-purple-300 hover:bg-zinc-800 active:bg-zinc-800 hover:text-white active:text-white' : 'text-purple-900 hover:bg-purple-50 active:bg-purple-50 hover:text-purple-700 active:text-purple-700'}`}
                                     >
                                         {item}
                                     </button>

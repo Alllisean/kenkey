@@ -92,12 +92,12 @@ export const PlatformSection = ({ t, darkMode, highlightedActivity, setHighlight
 
                         const CardContent = (
                             <div
-                                className={`h-[300px] relative rounded-[2rem] bg-zinc-200 overflow-hidden group shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${isActive ? 'animate-pulse-glow z-10' : ''}`}
+                                className={`h-[300px] relative rounded-[2rem] bg-zinc-200 overflow-hidden group shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${isActive ? 'z-10' : ''}`}
                                 style={{ animationDelay: `${i * 0.1}s` }}
                             >
                                 {/* Interactive Image Placeholder */}
                                 <div
-                                    className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                                    className="absolute inset-0 bg-cover bg-center group-hover:scale-110 group-active:scale-110 transition-transform duration-700"
                                     style={{ backgroundImage: `url(${p.img})` }}
                                 >
                                     {/* Fallback color if image fails */}
@@ -105,15 +105,15 @@ export const PlatformSection = ({ t, darkMode, highlightedActivity, setHighlight
                                 </div>
 
                                 {/* Hover Overlay: CLEAR Light Purple Translucent Hue */}
-                                <div className={`absolute inset-0 bg-purple-600/30 backdrop-blur-md transition-all duration-500 flex flex-col items-center justify-center p-6 text-center ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                <div className={`absolute inset-0 bg-purple-600/30 backdrop-blur-md transition-all duration-500 flex flex-col items-center justify-center p-6 text-center ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-active:opacity-100'}`}>
                                     {/* Content revealed only on hover or active */}
-                                    <div className={`text-4xl mb-4 transition-transform duration-500 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>{p.icon}</div>
-                                    <h3 className={`text-lg font-black text-white mb-2 transition-transform duration-500 delay-75 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>{p.name}</h3>
-                                    <p className={`text-purple-100 font-bold text-[10px] leading-relaxed transition-transform duration-500 delay-100 italic ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>
+                                    <div className={`text-4xl mb-4 transition-transform duration-500 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0 group-active:translate-y-0'}`}>{p.icon}</div>
+                                    <h3 className={`text-lg font-black text-white mb-2 transition-transform duration-500 delay-75 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0 group-active:translate-y-0'}`}>{p.name}</h3>
+                                    <p className={`text-purple-100 font-bold text-[10px] leading-relaxed transition-transform duration-500 delay-100 italic ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0 group-active:translate-y-0'}`}>
                                         {p.desc}
                                     </p>
                                     {(isAcademy || isEnterprise || isSpaces || isVentures || isKids) && (
-                                        <div className={`mt-4 px-4 py-1 bg-white text-purple-900 text-[10px] font-black rounded-full transition-transform duration-500 delay-150 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0'}`}>
+                                        <div className={`mt-4 px-4 py-1 bg-white text-purple-900 text-[10px] font-black rounded-full transition-transform duration-500 delay-150 ${isActive ? 'translate-y-0' : 'translate-y-4 group-hover:translate-y-0 group-active:translate-y-0'}`}>
                                             {isAcademy ? 'VIEW PROGRAM' : isEnterprise ? 'VIEW PARTNERSHIP' : isSpaces ? 'EXPLORE SPACES' : isVentures ? 'EXPLORE VENTURES' : 'LEARN MORE'}
                                         </div>
                                     )}
@@ -228,7 +228,7 @@ export const ImpactSection = ({ t, darkMode }) => {
                             {stats.map((stat, i) => (
                                 <div
                                     key={stat.key}
-                                    className={`w-full max-w-md p-6 rounded-3xl transition-all duration-500 cursor-default flex items-center gap-6 shadow-sm hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${darkMode ? 'bg-zinc-900 group hover:bg-purple-900' : 'bg-purple-50 group hover:bg-purple-900'}`}
+                                    className={`w-full max-w-md p-6 rounded-3xl transition-all duration-500 cursor-default flex items-center gap-6 shadow-sm hover:shadow-xl hover:-translate-y-1 active:scale-105 active:shadow-xl ${isVisible ? 'animate-pop-up' : 'opacity-0'} ${darkMode ? 'bg-zinc-900 group hover:bg-purple-900 active:bg-purple-900' : 'bg-purple-50 group hover:bg-purple-900 active:bg-purple-900'}`}
                                     style={{ animationDelay: `${i * 0.1}s` }}
                                 >
                                     <div className={`text-3xl w-14 h-14 flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-500 ${darkMode ? 'bg-zinc-800' : 'bg-white'}`}>

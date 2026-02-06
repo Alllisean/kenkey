@@ -58,7 +58,7 @@ const Hero = ({ t, countries, setHighlightedActivity }) => {
                 <div className="pointer-events-auto mt-8">
                     <button
                         onClick={() => setHighlightedActivity?.('ALL')}
-                        className="group/btn flex items-center space-x-3 px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-purple-900 transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-lg backdrop-blur-sm shadow-black/20"
+                        className="group/btn flex items-center space-x-3 px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-purple-900 active:bg-white active:text-purple-900 transition-all duration-300 transform hover:scale-110 active:scale-110 shadow-lg backdrop-blur-sm shadow-black/20"
                     >
                         <span>{t.cta}</span>
                         <div className="flex items-center justify-center w-6 h-6 rounded-full border border-current transition-colors duration-300">

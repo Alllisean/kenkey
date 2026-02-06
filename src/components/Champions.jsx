@@ -34,7 +34,7 @@ const PhotoBox = ({ id, label, className, delay = "0s", darkMode }) => {
         <div
             ref={boxRef}
             style={{ animationDelay: delay }}
-            className={`relative overflow-hidden rounded-3xl flex flex-col items-center justify-center transition-all duration-300 hover:shadow-lg group/item ${isBoxVisible ? 'animate-pop-up' : 'opacity-0 scale-95'} ${darkMode ? 'bg-zinc-900' : 'bg-purple-50'} ${className}`}
+            className={`relative overflow-hidden rounded-3xl flex flex-col items-center justify-center transition-all duration-300 hover:shadow-lg active:shadow-lg group/item ${isBoxVisible ? 'animate-pop-up' : 'opacity-0 scale-95'} ${darkMode ? 'bg-zinc-900 active:bg-zinc-800' : 'bg-purple-50 active:bg-purple-100'} ${className}`}
         >
             <div className={`absolute inset-0 opacity-10 flex items-center justify-center p-4 ${darkMode ? 'text-purple-400' : 'text-purple-900'}`}>
                 <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ const Champions = ({ t, darkMode }) => {
             {/* Navigation Arrows */}
             <button
                 onClick={() => scroll('left')}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 backdrop-blur-md rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-100 lg:opacity-60 lg:group-hover/slider:opacity-100 hover:scale-110 active:scale-95 ${darkMode ? 'bg-zinc-800 text-white' : 'bg-white text-purple-900'}`}
+                className={`absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 backdrop-blur-md rounded-full shadow-2xl hidden lg:flex items-center justify-center transition-all duration-300 opacity-60 group-hover/slider:opacity-100 hover:scale-110 active:scale-95 ${darkMode ? 'bg-zinc-800 text-white' : 'bg-white text-purple-900'}`}
                 aria-label={t.aria.prev}
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ const Champions = ({ t, darkMode }) => {
             </button>
             <button
                 onClick={() => scroll('right')}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 backdrop-blur-md rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-100 lg:opacity-60 lg:group-hover/slider:opacity-100 hover:scale-110 active:scale-95 ${darkMode ? 'bg-zinc-800 text-white' : 'bg-white text-purple-900'}`}
+                className={`absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 backdrop-blur-md rounded-full shadow-2xl hidden lg:flex items-center justify-center transition-all duration-300 opacity-60 group-hover/slider:opacity-100 hover:scale-110 active:scale-95 ${darkMode ? 'bg-zinc-800 text-white' : 'bg-white text-purple-900'}`}
                 aria-label={t.aria.next}
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -67,7 +67,7 @@ const Kidz = ({ darkMode }) => {
                         <p className="text-purple-500 font-bold uppercase tracking-widest text-sm">Tailored to Developmental Needs</p>
                     </div>
                     <div className="w-full h-[400px] mb-12 rounded-[3.5rem] overflow-hidden shadow-2xl relative group">
-                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80" alt="Kidz Learning Environment" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1200&q=80" alt="Kidz Learning Environment" className="w-full h-full object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-1000" />
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -77,7 +77,7 @@ const Kidz = ({ darkMode }) => {
                             { title: "Creative Corners", desc: "Dedicated spots for art, music, and storytelling.", icon: "🎷" },
                             { title: "Tech Integration", desc: "Basic digital literacy through gentle, fun play.", icon: "🎮" }
                         ].map((space, i) => (
-                            <div key={i} className={`p-8 rounded-[2.5rem] border transition-transform hover:-translate-y-2 ${darkMode ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-purple-100 shadow-xl'}`}>
+                            <div key={i} className={`p-8 rounded-[2.5rem] border transition-transform hover:-translate-y-2 active:-translate-y-2 ${darkMode ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-purple-100 shadow-xl'}`}>
                                 <div className="text-4xl mb-6">{space.icon}</div>
                                 <h3 className="text-xl font-bold mb-3">{space.title}</h3>
                                 <p className="opacity-70 text-sm leading-relaxed">{space.desc}</p>
@@ -150,10 +150,10 @@ const Kidz = ({ darkMode }) => {
                             BITZ Kidz is more than a preschool program—it is a nurturing space where children grow into confident, curious, and compassionate individuals.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <button className={`px-10 py-4 font-black rounded-full transition-all hover:scale-105 ${darkMode ? 'bg-purple-600 text-white' : 'bg-white text-purple-600 shadow-lg'}`}>
+                            <button className={`px-10 py-4 font-black rounded-full transition-all hover:scale-105 active:scale-105 ${darkMode ? 'bg-purple-600 text-white' : 'bg-white text-purple-600 shadow-lg'}`}>
                                 Enroll Your Explorer
                             </button>
-                            <Link to="/academy" className={`px-10 py-4 border-2 font-black rounded-full transition-all hover:scale-105 ${darkMode ? 'border-purple-500/30' : 'border-white/30 text-white'}`}>
+                            <Link to="/academy" className={`px-10 py-4 border-2 font-black rounded-full transition-all hover:scale-105 active:scale-105 ${darkMode ? 'border-purple-500/30' : 'border-white/30 text-white'}`}>
                                 View Academy
                             </Link>
                         </div>
